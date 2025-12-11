@@ -1,0 +1,7 @@
+{
+  "name": "demo/crud-employee",
+  "description": "Employee CRUD Demo",
+  "require": {
+    "php": "^8.0"
+  }
+}
