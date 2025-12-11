@@ -1,0 +1,23 @@
+# Dockerfile untuk PHP Render.com
+FROM php:8.2-apache
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Copy source code
+WORKDIR /var/www/html
+COPY . .
+
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader
+
+# Apache config
+RUN a2enmod rewrite
+COPY .htaccess /var/www/html/
+
+# Permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
+
+EXPOSE 8080
+CMD ["apache2-foreground"]
