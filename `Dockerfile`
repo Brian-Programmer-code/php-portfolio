@@ -33,8 +33,6 @@ RUN composer install \
     --no-interaction
 
 # Apache: point DocumentRoot to /public
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' \
-    /etc/apache2/sites-available/000-default.conf
 
 # Permissions (important for CI4 / uploads / sessions)
 RUN chown -R www-data:www-data /var/www/html \
