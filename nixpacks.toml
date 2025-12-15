@@ -2,5 +2,6 @@
 nixPkgs = ["php82", "php82Extensions.pdo_mysql", "composer"]
 
 [start]
-cmd = "php -S 0.0.0.0:$PORT index.php"
+cmd = "php -S 0.0.0.0:${PORT} -t . index.php"
+
 
